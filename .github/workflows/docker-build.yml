@@ -1,0 +1,33 @@
+name: Java CI with Docker
+
+# 1. Quando deve attivarsi?
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Usa una macchina Linux virtuale di GitHub
+
+    steps:
+    # 2. Scarica il codice dal repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 3. Installa Java 21 (necessario per compilare)
+    - name: Set up JDK 21
+      uses: actions/checkout@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    # 4. Compila il progetto con Maven
+    - name: Build with Maven
+      run: mvn clean package -DskipTests
+
+    # 5. Build dell'immagine Docker (solo per testare che il Dockerfile sia corretto)
+    - name: Build Docker Image
+      run: docker build -t mia-app-java:latest .
