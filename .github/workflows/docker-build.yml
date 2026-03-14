@@ -15,9 +15,9 @@ jobs:
     # 2. Scarica il codice dal repository
     - name: Checkout code
       uses: actions/checkout@v4
- - name: Set up JDK 21
+
     # 3. Installa Java 21 (necessario per compilare)
-    uses: actions/setup-java@v4
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
         java-version: '21'
