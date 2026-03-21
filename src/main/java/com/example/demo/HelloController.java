@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String sayHello() {
-        return "Ciao! La mia app Java gira in un container! 🚀";
+        return "Ciao! La mia app Java gira in un container! 20260321 001 🚀";
     }
 }
